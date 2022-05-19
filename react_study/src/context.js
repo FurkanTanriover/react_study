@@ -12,7 +12,10 @@ const reducer = (state,action)=>{
                 ...state,
                 users:state.users.filter(user=>action.payload!==user.id)
             }
+            default:
+                return null
         }
+        
     }
     export function UserProvider(props) {
 
@@ -61,9 +64,10 @@ const reducer = (state,action)=>{
     </userContext.Provider>
   )
 }
-dispatch(action =>{
-    state => reducer(state,action);
-});
+// dispatch(action =>
+//     state => reducer(state,action)
+//     );
+
 const UserConsumer=userContext.Consumer;
 
 export default UserConsumer;

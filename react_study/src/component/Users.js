@@ -7,7 +7,8 @@ export default class Users extends Component {
     return (
       <UserConsumer>
         {
-          value=>{const users=value;
+          value=>{
+            const users=value;
           console.log(users);
           return (
             <div>
