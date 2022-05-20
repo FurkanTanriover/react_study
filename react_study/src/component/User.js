@@ -12,20 +12,20 @@ import UserConsumer from '../context';
 
   const onDeleteUser=(dispatch,e)=>{
     const id=props;
-    dispatch({type:"DELETE_USER,payload:id"});
+    dispatch({type:"DELETE_USER",payload:id});
   }
 
     return(
       <UserConsumer>
         {
           value=>{
-            const dispatch=value;
+            const {dispatch}=value;
             return (
               <div className='col-md-8 mb-4'>
                   <div className='card' onClick={()=>setVisible(!isVisible)}>
                     <div className='card-header d-flex justify-content-between'>
                       <h4 className='d-inline'>{name}</h4>
-                      <i onClick={()=>onDeleteUser()} className='far fa-trash-alt' style={{cursor:"pointer"}}> </i>
+                      <i onClick={()=>onDeleteUser(dispatch)} className='far fa-trash-alt' style={{cursor:"pointer"}}> </i>
                     </div>
                     {isVisible ? 
                     <div className='card-body'>

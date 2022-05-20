@@ -1,76 +1,82 @@
-import React,{useState} from 'react'
+import React, { Component } from 'react'
 
-const userContext=React.createContext();
-//Provider ve Consumer alıyoruz
+const UserContext=React.createContext(); 
 
-
-
-const reducer = (state,action)=>{
+const reducer =(state,action)=>{
     switch(action.type){
+        
         case "DELETE_USER":
-            return {
+            console.log(action.type);
+            return{
+                
                 ...state,
                 users:state.users.filter(user=>action.payload!==user.id)
             }
             default:
-                return null
+                return state;
         }
-        
     }
-    export function UserProvider(props) {
 
-    const [users]=useState([
-        {
-            id:1,
-            name:"Furkan ",
-            salary:"5000",
-            department:"Bilişim"
-        },
-        {
-            id:2,
-            name:"Fatih",
-            salary:"5000",
-            department:"Bilişim"
-        },
-        {
-            id:3,
-            name:"Aleyna ",
-            salary:"5000",
-            department:"Bilişim"
-        },
-        {
-            id:4,
-            name:"Palavan ",
-            salary:"5000",
-            department:"Bilişim"
-        },
-        {
-            id:5,
-            name:"Selim ",
-            salary:"5000",
-            department:"Bilişim"
-        },
-        {
-            id:6,
-            name:"Aliş ",
-            salary:"5000",
-            department:"Bilişim"
-        },
-    ]);
 
+export  class UserProvider extends Component {
+        state={
+            users:[
+                {
+                    id:1,
+                    name:"Furkan ",
+                    salary:"5000",
+                    department:"Bilişim"
+                },
+                {
+                    id:2,
+                    name:"Fatih",
+                    salary:"5000",
+                    department:"Bilişim"
+                },
+                {
+                    id:3,
+                    name:"Aleyna ",
+                    salary:"5000",
+                    department:"Bilişim"
+                },
+                {
+                    id:4,
+                    name:"Palavan ",
+                    salary:"5000",
+                    department:"Bilişim"
+                },
+                {
+                    id:5,
+                    name:"Selim ",
+                    salary:"5000",
+                    department:"Bilişim"
+                },
+                {
+                    id:6,
+                    name:"Aliş ",
+                    salary:"5000",
+                    department:"Bilişim"
+                },
+            ],
+
+            dispatch:action =>{
+                this.setState(state=>reducer(state,action))
+            }
+  
+        }
+       
+ 
+  render() {
     return (
-        <userContext.Provider value={users}>
-        {props.children}
-    </userContext.Provider>
-  )
+     <UserContext.Provider value={this.state}>
+         {this.props.children}
+     </UserContext.Provider> 
+    )
+  }
 }
-// dispatch(action =>
-//     state => reducer(state,action)
-//     );
-
-const UserConsumer=userContext.Consumer;
-
+const UserConsumer=UserContext.Consumer;
 export default UserConsumer;
+
 
 
 
