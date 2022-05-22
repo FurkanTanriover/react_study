@@ -4,13 +4,18 @@ const UserContext=React.createContext();
 
 const reducer =(state,action)=>{
     switch(action.type){
-        
+        case "ADD_USER":
+            console.log(action.type);
+            return {
+                ...state,
+                users:[...state.users,action.payload],
+            }
         case "DELETE_USER":
             console.log(action.type);
             return{
                 
                 ...state,
-                users:state.users.filter(user=>action.payload!==user.id)
+                users:state.users.filter(user=>action.payload!==user.id),
             }
             default:
                 return state;

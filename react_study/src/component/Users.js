@@ -9,7 +9,6 @@ export default class Users extends Component {
         {
           value=>{
             const {users}=value;
-            
           return (
             <div>
                 {
