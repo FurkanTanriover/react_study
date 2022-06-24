@@ -4,6 +4,8 @@ import Users from './component/Users';
 import React from 'react'
 import {Helmet} from "react-helmet";
 import AddUser from './component/AddUser';
+import Card from './component/Card';
+import RecipeReviewCard from './component/Card';
 
  function App() {
    
@@ -13,6 +15,7 @@ import AddUser from './component/AddUser';
 
       <Navbar title="User App"></Navbar>
       <AddUser> </AddUser>
+      <RecipeReviewCard></RecipeReviewCard>
       <Users />
         
     </div>
